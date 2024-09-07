@@ -2,6 +2,8 @@
 
 namespace TwoFa\Authentication\Strategies;
 
+use TwoFa\Models\User;
+
 interface AuthenticationStrategy {
-    public function authenticate($user);
+    public function authenticate(User $user);
 }

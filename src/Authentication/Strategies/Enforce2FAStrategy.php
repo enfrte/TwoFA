@@ -2,9 +2,11 @@
 
 namespace TwoFa\Authentication\Strategies;
 
+use TwoFa\Models\User;
+
 // Called when user's company requires 2FA for its login
 class Enforce2FAStrategy implements AuthenticationStrategy {
-    public function authenticate($user) {
+    public function authenticate(User $user) {
         // Check if 2FA is enabled
         if (!$user->is2FAEnabled()) {
             // Instruct user to enable 2FA
@@ -16,6 +18,7 @@ class Enforce2FAStrategy implements AuthenticationStrategy {
             // Verify TOTP against user's stored 2FA secret
             if ($this->verifyTOTP($user->getTOTPSecret())) {
                 // Redirect user to the application if successful
+                echo "2FA verification successful.";
                 return true;
             } else {
                 echo "2FA verification failed.";

@@ -1,0 +1,9 @@
+{
+    "name": "me/two-fa",
+    "autoload": {
+        "psr-4": {
+            "TwoFa\\": "src/"
+        }
+    },
+    "require": {}
+}
